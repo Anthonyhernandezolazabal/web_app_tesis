@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}{% endblock %}</title>
+  
+  {% include 'layouts/head.html' %}
+
+</head>
+
+<body class="control-sidebar-slide-open sidebar-mini text-sm">
+
+  <div class="wrapper">
+
+    {% include 'layouts/nav.html' %}
+
+    {% include 'layouts/menu.html' %}
+
+    {% block content %} {% endblock %}
+
+    {% include 'layouts/footer.html' %}
+
+  </div>
+
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'plugins/pace-progress/pace.min.js' %}"></script>
+  <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+</body>
+
+</html>
