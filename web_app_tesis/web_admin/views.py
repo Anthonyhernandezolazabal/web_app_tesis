@@ -1,4 +1,49 @@
 from django.shortcuts import render
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from web_admin.forms import CustomUserCreationForm
+from django.contrib import messages
 
-def index(request):
-    return render(request, 'layouts/inicio.html')
+@login_required (login_url='home')
+
+def Home(request):
+  return render(request, 'layouts/inicio.html')
+
+class LoginFormViews(LoginView):
+  template_name = 'registration/acceso.html'
+
+  def dispatch(self, request, *args, **kwargs):
+      print('request.user :',request.user)
+      if request.user.is_authenticated:
+        return redirect('home')
+      return super().dispatch(request, *args, **kwargs)
+
+  def get_context_data(self,**kwargs):
+      context = super().get_context_data(**kwargs)
+      context['title'] = 'Iniciar sesion'
+      return context
+
+def usuarios(request):
+  return render(request, 'layouts/user.html')
+
+def registro_usuario(request):
+
+  if request.method == 'POST':
+
+    form = CustomUserCreationForm(request.POST)
+
+    if form.is_valid():
+      form.save()
+
+      username = form.cleaned_data['username']
+      messages.success(request, f"Usuario {username} creado")
+
+      return redirect('usuarios')
+
+  else:
+
+    form = CustomUserCreationForm
+
+  context = {'form':form}
+  return render(request, 'layouts/register_user.html',context)

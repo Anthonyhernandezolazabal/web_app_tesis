@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'dist/css/style_login.css' %}">
+  <title>Acceso al sistema</title>
+
+</head>
+
+<body>
+  <div class="wrapper fadeInDown">
+
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <center>
+
+        <img src="{% static 'dist/img/diente_logn.png' %}" class='mt-5' width="120"><br>
+
+      </center>
+      <h2 class="active"> ACCESO AL SISTEMA INTELIGENTE </h2>
+
+      <!-- Login Form -->
+      <form method="post">
+
+        {% csrf_token %}
+
+        <input type="text" name="username" id="txtUser" class="fadeIn second" placeholder="Usuario">
+        <br>
+        <span id="alert_lg_User" class="error invalid-feedback" style="display: inline;"><i class="fas fa-times-circle"></i> <span id="alert_lg_User_text"></span></span>
+        
+        <input type="password" name='password' id="txtPass" class="fadeIn third text_pass" placeholder="Contraseña"><br>
+        <span id="alert_lg_Pass" class="error invalid-feedback" style="display: inline;"><i class="fas fa-times-circle"></i> <span id="alert_lg_Pass_text"></span></span><br>
+
+        <!-- <button type="submit" class="fadeIn fourth">Ingresar</button> -->
+
+        <input type="submit" class="fadeIn fourth" id="btningresar" value="Ingresar" style='cursor: pointer;' disabled >
+
+      </form>
+
+    </div>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'dist/js/login.js' %}"></script>
+
+</body>
+
+</html>
