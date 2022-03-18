@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'web_admin',
     'crispy_forms',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

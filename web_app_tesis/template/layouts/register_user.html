@@ -1,5 +1,5 @@
 {% extends "layouts/base.html" %}
-{% block title %}The current time{% endblock %}
+{% block title %}Usuarios{% endblock %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -23,30 +23,108 @@
 
   <section class="content">
 
-    <div class="error-page">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <h5><i class="icon fas fa-check"></i>{{message}}.</h5>
+    </div>
+    {% endfor %}
+    {% endif %}
 
- 
-
-      <div class="card card-outline card-success">
-        <div class="card-body">
-          <form method="post">
-
-            {% csrf_token %}
-
-            {{ form | crispy }}
-
-            <br>
-
-            <button type="submit" class="btn btn-success swalDefaultSuccess">
-              Launch Success Toast
-            </button>
-
-          </form>
+    <div class="row">
+      <div class="col-4" id="accordion">
+        <div class="card card-primary card-outline">
+          <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false">
+            <div class="card-header">
+              <h4 class="card-title w-100">
+                REGISTRO DE NUEVO USUARIO
+              </h4>
+            </div>
+          </a>
+          <div id="collapseOne" class="collapse show" data-parent="#accordion" style="">
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <br>
+                <center><button type="submit" class="btn btn-success swalDefaultSuccess">
+                    Registrar
+                  </button></center>
+              </form>
+            </div>
+          </div>
         </div>
-        <!-- /.card-body -->
       </div>
 
+
+      <div class="col-8">
+        <div class="card card-outline card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Registro Total de Usuarios</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+            <!-- /.card-tools -->
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0" style="height: 536px;">
+            <table class="table table-head-fixed text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Usuario</th>
+                  <th>Tipo Usuario</th>
+                  <th>Correo Electrónico</th>
+                  <th>Estado</th>
+                  <th>Último Acceso</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for alluser in userall %}
+                <tr>
+                  <td>{{ alluser.id }}</td>
+                  <td>{{ alluser.first_name }} {{ alluser.last_name }}</td>
+                  <td>{{ alluser.username }}</td>
+
+                  {% if alluser.is_superuser == 1 %}
+                  <td><span class="badge bg-primary">Admin Root</span></td>
+                  {% else %}
+                  <td><span class="badge bg-warning">Médico Dentista</span></td>
+                  {% endif %}
+
+
+
+                  <td>{{ alluser.email }}</td>
+                  {% if alluser.is_superuser == 1 %}
+                  <td><span class="badge bg-success">Activo</span></td>
+                  {% else %}
+                  <td><span class="badge bg-danger">Inactivo</span></td>
+                  {% endif %}
+                  <td>{{ alluser.date_joined }}</td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
     </div>
+
+
+
+
+
+
+
+
+
   </section>
 
 

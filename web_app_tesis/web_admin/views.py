@@ -1,9 +1,11 @@
+from turtle import pos
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from web_admin.forms import CustomUserCreationForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 @login_required (login_url='home')
 
@@ -24,9 +26,6 @@ class LoginFormViews(LoginView):
       context['title'] = 'Iniciar sesion'
       return context
 
-def usuarios(request):
-  return render(request, 'layouts/user.html')
-
 def registro_usuario(request):
 
   if request.method == 'POST':
@@ -44,6 +43,10 @@ def registro_usuario(request):
   else:
 
     form = CustomUserCreationForm
+    usuariosAll = User.objects.all()
 
-  context = {'form':form}
+  context = {
+    'form':form,
+    'userall':usuariosAll
+    }
   return render(request, 'layouts/register_user.html',context)
