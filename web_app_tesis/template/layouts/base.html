@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>{% block title %}{% endblock %}</title>
-  
+
   {% include 'layouts/head.html' %}
 
 </head>
@@ -16,6 +16,11 @@
 <body class="control-sidebar-slide-open sidebar-mini text-sm">
 
   <div class="wrapper">
+
+    <input type="hidden" name="id_user_logueado" id="id_user_logueado" value='{{ id_user }}'>
+    <input type="hidden" name="id_uuser_name" id="id_uuser_name" value='{{ user_name }}'>
+    <input type="hidden" name="user_autenticate_logueado" id="user_autenticate_logueado" value='{{ user_autenticate }}'>
+
 
     {% include 'layouts/nav.html' %}
 
@@ -27,11 +32,35 @@
 
   </div>
 
+  <script>
+    var guardado = localStorage.getItem('datos') || '';
+    if (guardado == '') {
+      var cliente_id = document.getElementById('id_user_logueado').value
+      var usuario_nombre = document.getElementById('id_uuser_name').value
+      var autenti_user = document.getElementById('user_autenticate_logueado').value
+    } else {
+      var cliente_id = JSON.parse(guardado).id_usuario;
+      var usuario_nombre = JSON.parse(guardado).nombre_usuario;
+      var autenti_user = JSON.parse(guardado).usuario_autenticado;
+      document.getElementById('id_user_logueado').value = cliente_id
+      document.getElementById('id_uuser_name').value = usuario_nombre
+      document.getElementById('user_autenticate_logueado').value = autenti_user
+    }
+    datos = {
+      id_usuario: document.getElementById('id_user_logueado').value,
+      nombre_usuario: document.getElementById('id_uuser_name').value,
+      usuario_autenticado: document.getElementById('user_autenticate_logueado').value,
+    }
+    localStorage.setItem('datos', JSON.stringify(datos));
+  </script>
+
   <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'plugins/pace-progress/pace.min.js' %}"></script>
   <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
   <script src="{% static 'dist/js/usuarios.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

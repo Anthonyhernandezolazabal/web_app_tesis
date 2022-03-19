@@ -30,13 +30,15 @@
                 <div class="row">
                     <div class="col-3">
                         <label>Historia Clínica:</label>
-                        <input type="text" class="form-control" placeholder="Historia Clínica">
+                        <input type="text" class="form-control" placeholder="Historia Clínica" id="txtHistorialC"
+                            name="txtHistorialC" Disabled>
                     </div>
                     <div class="col-6">
                     </div>
                     <div class="col-3">
                         <label>Dni:</label>
-                        <input type="text" class="form-control" placeholder=".col-5">
+                        <input type="text" class="form-control" placeholder="Dni" id="txtdni" name="txtdni" maxlength="8" onkeypress='return validaNumericos(event)'>
+                        <code id="co_dni"></code>
                     </div>
                 </div>
                 <br>
@@ -44,40 +46,62 @@
                 <div class="row">
                     <div class="col-3">
                         <label>Primer Nombre:</label>
-                        <input type="text" class="form-control" placeholder="Primer Nombre">
+                        <input type="text" class="form-control" placeholder="Primer Nombre" id="txtnom01" name="txtnom01">
+                        <code id="co_nom"></code>
                     </div>
                     <div class="col-3">
                         <label>Segundo Nombre:</label>
-                        <input type="text" class="form-control" placeholder="Segundo Nombre">
+                        <input type="text" class="form-control" placeholder="Segundo Nombre" id="txtnom02" name="txtnom02">
                     </div>
                     <div class="col-3">
-                        <label>Apellidos Nombre:</label>
-                        <input type="text" class="form-control" placeholder="Apellidos">
+                        <label>Apellido Paterno:</label>
+                        <input type="text" class="form-control" placeholder="Apellidos" id="txtape01" name="txtape01">
+                        <code id="co_ap01"></code>
                     </div>
                     <div class="col-3">
-                        <label>Apellidos Nombre:</label>
-                        <input type="text" class="form-control" placeholder="Apellidos">
+                        <label>Apellidos Materno:</label>
+                        <input type="text" class="form-control" placeholder="Apellidos" id="txtape02" name="txtape02">
+                        <code id="co_ap02"></code>
                     </div>
                 </div>
                 <label class="mt-4 mb-2">Fecha de Nacimiento:</label>
                 <div class="row">
                     <div class="col-2">
-                        <input type="text" class="form-control" placeholder="Mes">
+                        <select class="form-control" id="txtmes" name="txtmes">
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select> </div>
+                    <div class="col-2">
+                        <!-- <input type="number" maxlength="2" class="form-control" placeholder="Día"> -->
+                        <input type="text" id="txtdia" name="txtdia" class="form-control" maxlength="2" onkeypress='return validaNumericos(event)' placeholder="Día"/>
+                        <code id="co_dia"></code>
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control" placeholder="Día">
+                        <input type="text" id="txtanio" maxlength="4" onkeypress='return validaNumericos(event)' name="txtanio" class="form-control" placeholder="Año">
+                        <code id="co_anio"></code>
+                    </div>
+                    <div class="col-1">
+                        <input type="text" class="form-control" id="txtEdad" name="txtEdad" placeholder="Edad" Disabled>
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control" placeholder="Año">
+                        <input type="text" class="form-control" id="txttelef" name="txttelef"  maxlength="9" onkeypress='return validaNumericos(event)' placeholder="N° Celular">
+                        <code id="co_tel"></code>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control" placeholder="Edad">
-                    </div>
-                    <div class="col-3">
-                        <select class="form-control">
-                            <option>Género</option>
-                            <option>Masculino</option>
-                            <option>Femenino</option>
+                        <select class="form-control" id="txtgenero" name="txtgenero">
+                            
+                            <option value="1">Masculino</option>
+                            <option value="0">Femenino</option>
                         </select>
                     </div>
                 </div>
@@ -90,13 +114,11 @@
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" id="customCheckbox1"
-                                    value="option1">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox1">
                                 <label for="customCheckbox1" class="custom-control-label">Gestante</label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input custom-control-input-danger" type="checkbox"
-                                    id="customCheckbox2">
+                                <input class="custom-control-input custom-control-input-danger" type="checkbox" id="customCheckbox2">
                                 <label for="customCheckbox2" class="custom-control-label">Diabetes</label>
                             </div>
                             <div class="custom-control custom-checkbox">
@@ -104,8 +126,7 @@
                                 <label for="customCheckbox3" class="custom-control-label">Hipertensión</label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input custom-control-input-danger" type="checkbox"
-                                    id="customCheckbox4">
+                                <input class="custom-control-input custom-control-input-danger" type="checkbox" id="customCheckbox4">
                                 <label for="customCheckbox4" class="custom-control-label">P. Coagulación</label>
                             </div>
                             <div class="custom-control custom-checkbox">
@@ -113,29 +134,23 @@
                                 <label for="customCheckbox5" class="custom-control-label">Alergico</label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input
-                                    class="custom-control-input custom-control-input-danger custom-control-input-outline"
-                                    type="checkbox" id="customCheckbox6">
+                                <input class="custom-control-input custom-control-input-danger custom-control-input-outline" type="checkbox" id="customCheckbox6">
                                 <label for="customCheckbox6" class="custom-control-label">Otros</label>
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" id="txtarea" disabled></textarea>
+                            <code id="co_txtareas"></code>
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-            <!-- /.card-body -->
-
-
             <div class="card-footer">
-                <center><button type="submit" class="btn btn-info">REGISTRAR</button></center>
+                <center><button type="button" onclick="registro_p()" class="btn btn-info">REGISTRAR</button></center>
             </div>
         </div>
     </section>
