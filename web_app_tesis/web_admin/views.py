@@ -6,9 +6,12 @@ from django.contrib.auth.decorators import login_required
 from web_admin.forms import CustomUserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-
+from django.http import HttpRequest
+from web_admin.models import pacientes
+"""=============================================
+LOGIN
+============================================="""
 @login_required (login_url='home')
-
 def Home(request):
   return render(request, 'layouts/inicio.html')
 
@@ -26,6 +29,9 @@ class LoginFormViews(LoginView):
       context['title'] = 'Iniciar sesion'
       return context
 
+"""=============================================
+MÓDULO REGISTRO DE USUARIOS
+============================================="""
 def registro_usuario(request):
 
   if request.method == 'POST':
@@ -50,3 +56,18 @@ def registro_usuario(request):
     'userall':usuariosAll
     }
   return render(request, 'layouts/register_user.html',context)
+
+"""=============================================
+MÓDULO PACIENTES
+============================================="""
+class modulo_paciente(HttpRequest):
+  def listar_paciente_historial(request):
+    pacientesall = pacientes.objects.all()
+    context = {
+      'allpacientes':pacientesall,
+    }
+    return render(request, 'layouts/historial.html',context)
+
+  def listar_paciente_registro(request):
+
+    return render(request, 'layouts/pacientes.html')

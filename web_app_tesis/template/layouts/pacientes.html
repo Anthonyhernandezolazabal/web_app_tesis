@@ -1,0 +1,146 @@
+{% extends "layouts/base.html" %}
+{% block title %}Registro Paciente{% endblock %}
+
+
+{% block content %}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Nuevo registro de paciente</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Paciente</a></li>
+                        <li class="breadcrumb-item active">Nuevo registro de paciente</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+
+        <div class="card card-outline card-success">
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-3">
+                        <label>Historia Clínica:</label>
+                        <input type="text" class="form-control" placeholder="Historia Clínica">
+                    </div>
+                    <div class="col-6">
+                    </div>
+                    <div class="col-3">
+                        <label>Dni:</label>
+                        <input type="text" class="form-control" placeholder=".col-5">
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-3">
+                        <label>Primer Nombre:</label>
+                        <input type="text" class="form-control" placeholder="Primer Nombre">
+                    </div>
+                    <div class="col-3">
+                        <label>Segundo Nombre:</label>
+                        <input type="text" class="form-control" placeholder="Segundo Nombre">
+                    </div>
+                    <div class="col-3">
+                        <label>Apellidos Nombre:</label>
+                        <input type="text" class="form-control" placeholder="Apellidos">
+                    </div>
+                    <div class="col-3">
+                        <label>Apellidos Nombre:</label>
+                        <input type="text" class="form-control" placeholder="Apellidos">
+                    </div>
+                </div>
+                <label class="mt-4 mb-2">Fecha de Nacimiento:</label>
+                <div class="row">
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Mes">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Día">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Año">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" placeholder="Edad">
+                    </div>
+                    <div class="col-3">
+                        <select class="form-control">
+                            <option>Género</option>
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox1"
+                                    value="option1">
+                                <label for="customCheckbox1" class="custom-control-label">Gestante</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input custom-control-input-danger" type="checkbox"
+                                    id="customCheckbox2">
+                                <label for="customCheckbox2" class="custom-control-label">Diabetes</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox3">
+                                <label for="customCheckbox3" class="custom-control-label">Hipertensión</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input custom-control-input-danger" type="checkbox"
+                                    id="customCheckbox4">
+                                <label for="customCheckbox4" class="custom-control-label">P. Coagulación</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox5">
+                                <label for="customCheckbox5" class="custom-control-label">Alergico</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input
+                                    class="custom-control-input custom-control-input-danger custom-control-input-outline"
+                                    type="checkbox" id="customCheckbox6">
+                                <label for="customCheckbox6" class="custom-control-label">Otros</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- /.card-body -->
+
+
+            <div class="card-footer">
+                <center><button type="submit" class="btn btn-info">REGISTRAR</button></center>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+{% endblock %}
